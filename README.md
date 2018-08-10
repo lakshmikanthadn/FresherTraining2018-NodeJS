@@ -1,14 +1,14 @@
-# Node express 
-This application also uses a body parser middleware to parse the post body (JSON).
+# Node express static server
 
-This application has two endpoints to server the data.
+This application serves the static index.html file.
+
+Also the staic image files..
 
 ```
-1. GET /sayhello
-Returns : Hello world
 
-2. POST /echo
-Returns: The POSTED BODY (json only).
+/node.js_logo
+
+/coding.gif
 
 ```
 
