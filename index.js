@@ -14,6 +14,7 @@ var app = express();
 app.use(bodyparser.json());
 // You can add as many middle wares as you can.
 
+app.use(express.static('public'));
 /**
  * Application Routes.
  * Create the appication routes here with its method name and the path
