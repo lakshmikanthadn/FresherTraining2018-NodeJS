@@ -1,4 +1,5 @@
-# Node without express
+# Node express 
+This application also uses a body parser middleware to parse the post body (JSON).
 
 This application has two endpoints to server the data.
 

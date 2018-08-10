@@ -1,53 +1,45 @@
-var http = require('http');
 
-var server = http.createServer(function (request, response) {
-  console.log("Received a request.");
-  const { headers, method, url } = request;
-  console.log({ headers, method, url });
-  const data = [];
-  /**
-   * Listen to requet data.
-   * 
-   */
-  request
-    .on('error', (err) => {
-      console.error(err);
-    })
-    .on('data', chunk => {
-      data.push(chunk);
-    })
-    .on('end', () => {
-      const body = Buffer.concat(data).toString();
+// Import the application modules.
+var express = require("express");
+var bodyparser = require('body-parser');
 
-      /**
-       *  GET: /sayhello
-       * Response: hello world (text)
-       */
-      if (method === "GET" && url === '/sayhello') {
-        response.statusCode = 200;
-        response.end("Helloo world...");
-      }
-      /**
-      *  POST: /echo
-      * Response: Request Body (json)
-      */
-      else if (method === "POST" && url === '/echo') {
-        response.setHeader('content-type', 'application/json');
-        response.statusCode = 200;
-        response.end(body);
-      }
-      /**
-      *  Rest all METHODs and PATHs
-      *  Response: 404 with method and path NA.
-      */
-      else {
-        response.setHeader('content-type', 'application/json');
-        response.statusCode = 404;
-        response.end(JSON.stringify({ message: "Path/method not found/allowed." }));
-      }
-      console.log("--------------------------------");
-    });
+// Create the express application.
+var app = express();
 
-}).listen(3000, function () {
-  console.log("Server started on port 3000");
+/**
+ * Middle ware.
+ * Add the body-parser middle ware which parses the incoming json body.
+ * You don't need the request.on('data', function bla bla bla....)
+ */
+app.use(bodyparser.json());
+// You can add as many middle wares as you can.
+
+/**
+ * Application Routes.
+ * Create the appication routes here with its method name and the path
+ */
+
+ /**
+  * GET /Sayhello
+  */
+app.get("/sayhello", function (request, response) {
+  response.status(200).send("Helloo world...");
 });
+
+
+ /**
+  * POST /echo
+  */
+app.post("/echo", function (request, response) {
+  response.status(200).send(request.body);
+});
+
+
+
+var PORT = 3000;
+/**
+ * Start application server on the desired port.
+ */
+app.listen(PORT, function () {
+  console.log("Application started on port ", PORT);
+})
