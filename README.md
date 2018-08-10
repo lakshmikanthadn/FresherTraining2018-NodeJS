@@ -1,7 +1,20 @@
-# Anatomy of an HTTP Transaction
-The purpose of this guide is to impart a solid understanding of the process of Node.js HTTP handling. We'll assume that you know, in a general sense, how HTTP requests work, regardless of language or programming environment.
+# Node without express
+
+This application has two endpoints to server the data.
+
+```
+1. GET /sayhello
+Returns : Hello world
+
+2. POST /echo
+Returns: The POSTED BODY (json only).
+
+```
+
+Note : The rest all methods and paths will return 404.
 
 ### TO RUN APPLICATION
 ```
 npm start
+
 ```
