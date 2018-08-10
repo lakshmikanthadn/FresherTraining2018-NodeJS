@@ -1,0 +1,17 @@
+{
+  "name": "anatomy",
+  "version": "1.0.0",
+  "description": "anatomy of the node http",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "start:nodemon" : "nodemon ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": ";laskhmi kantha",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
